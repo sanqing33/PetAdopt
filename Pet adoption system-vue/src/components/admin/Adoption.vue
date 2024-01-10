@@ -1,19 +1,8 @@
 <template>
   <div style="height: 80vh">
     <h1 style="text-align: center;font-size: 36px">领养情况</h1>
-    <!-- 数据表 -->
     <el-row style="margin-top: 15px">
-      <!-- 定义数据表  data属性用来绑定我们要显示的数据列表-->
-      <el-table
-          ref="studentTable"
-          :data="user"
-          border="true"
-          height="524px"
-          max-height="800"
-          stripe="true"
-          @select="doSelecte"
-      >
-
+      <el-table ref="studentTable" :data="user" height="524px" max-height="800">
         <el-table-column align="center" type="selection" width="50"/>
         <el-table-column align="center" label="姓名" prop="user_name"/>
         <el-table-column align="center" label="用户名" prop="user_username"/>
@@ -21,13 +10,34 @@
         <el-table-column align="center" label="宠物类型" prop="pet_type"/>
         <el-table-column align="center" label="操作" width="210">
           <template #default="scope">
-            <el-button size="small" type="primary" @click="openEditWin(scope.row.stuNo)">编辑</el-button>
-            <el-button size="small" type="danger" @click="doDelete(scope.row)">删除</el-button>
+            <el-button size="small" type="primary" @click="doEdit(scope.row.name)">编辑</el-button>
+            <el-button size="small" type="danger" @click="doDelete(scope.row.user_username)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
     </el-row>
-    <!-- 分页栏 -->
+
+    <el-dialog v-model="editDialogVisible" title="编辑宠物信息" width="60%">
+      <el-form ref="form" :model="edit" label-width="80px">
+        <el-form-item label="姓名">
+          <el-input v-model="edit.user_name" placeholder="姓名" readonly></el-input>
+        </el-form-item>
+        <el-form-item label="用户名">
+          <el-input v-model="edit.user_username" placeholder="用户名"></el-input>
+        </el-form-item>
+        <el-form-item label="宠物名称">
+          <el-input v-model="edit.pet_name" placeholder="宠物名称"></el-input>
+        </el-form-item>
+        <el-form-item label="宠物类型">
+          <el-input v-model="edit.pet_type" placeholder="宠物类型"></el-input>
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <el-button type="primary" @click="doEditSubmit">提交</el-button>
+        <el-button type="danger" @click="hidEditWin">取消</el-button>
+      </template>
+    </el-dialog>
+
     <el-row style="position: absolute;bottom: 20px">
       <el-pagination
           :current-page="pagination.page"
@@ -43,20 +53,11 @@
 </template>
 
 <script setup>
-import {computed, onMounted, ref, watch} from "vue";
+import {onMounted, ref} from "vue";
 import axios from "axios";
-import {CirclePlus, Delete, Edit, Search, Share} from "@element-plus/icons-vue";
+import {ElMessage, ElMessageBox} from "element-plus";
 
 const user = ref([])
-
-const doSearch = ref(false)
-
-const searchTotal = ref(false)
-
-const search = () => {
-  doSearch.value = true;
-  searchTotal.value = true;
-}
 
 const pagination = ref({
   page: 1,
@@ -86,15 +87,72 @@ onMounted(() => {
   fetchPets();
 });
 
-const query = ref({
-  name: '',
-  species: '',
-  available: ''
-});
 
-watch(query, () => {
-  pagination.value.page = 1;
-});
+const edit = ref()
+
+const editDialogVisible = ref(false)
+
+const doEdit = (name) => {
+  edit.value = {};
+  editDialogVisible.value = true;
+  for (let i = 0; i < user.value.length; i++) {
+    if (user.value[i].name === name) {
+      edit.value = user.value[i];
+      break;
+    }
+  }
+}
+
+const doEditSubmit = () => {
+  axios.post('http://localhost:8080/api/admin/adoption/edit', edit.value)
+      .then(response => {
+        ElMessage({
+          type: 'success',
+          message: '修改成功',
+        })
+        editDialogVisible.value = false;
+      })
+      .catch(error => {
+        ElMessage.error('请求失败，请联系管理员。')
+      });
+}
+
+const hidEditWin = () => {
+  editDialogVisible.value = false;
+  edit.value = {};
+}
+
+const doDelete = (user_username) => {
+  ElMessageBox.confirm(
+      `是否确认要删除[${user_username}]？`,
+      '提示',
+
+      {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }
+  )
+      .then(() => {
+        axios.post('http://localhost:8080/api/admin/adoption/delete', {name: user_username})
+            .then(response => {
+              ElMessage({
+                type: 'success',
+                message: '删除成功',
+              })
+              fetchPets();
+            })
+            .catch(error => {
+              ElMessage.error('请求失败，请联系管理员。')
+            });
+      })
+      .catch(() => {
+        ElMessage({
+          type: 'info',
+          message: '取消删除',
+        })
+      })
+}
 
 
 </script>

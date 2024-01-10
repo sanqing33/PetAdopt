@@ -87,9 +87,9 @@
 </template>
 
 <script setup>
-import {computed, onMounted, ref, watch} from "vue";
+import {onMounted, ref, watch} from "vue";
 import axios from "axios";
-import {CirclePlus, Delete, Edit, Search, Share} from "@element-plus/icons-vue";
+import {Delete, Search} from "@element-plus/icons-vue";
 import {ElMessage, ElMessageBox} from "element-plus";
 
 const user = ref([])
@@ -167,8 +167,6 @@ const doEditSubmit = () => {
 const hidEditWin = () => {
   editDialogVisible.value = false;
   edit.value = {};
-  insertDialogVisible.value = false;
-  insert.value = {};
 }
 
 const doDelete = (name) => {

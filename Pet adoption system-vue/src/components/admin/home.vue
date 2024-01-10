@@ -23,12 +23,6 @@
           <p>跟踪宠物领养情况，及时更新领养状态和相关信息。</p>
         </div>
       </section>
-      <section class="feedback-section">
-        <h2>用户反馈</h2>
-        <div class="feedback-carousel">
-          <!-- 用户反馈内容展示，可以使用轮播组件或其他方式展示多个反馈 -->
-        </div>
-      </section>
     </main>
   </div>
 </template>
@@ -38,7 +32,6 @@
 </script>
 
 <style>
-/* 样式可以根据你的需求进行调整 */
 .welcome-page {
   max-width: 800px;
   margin: 0 auto;
@@ -64,10 +57,6 @@
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-}
-
-.feedback-carousel {
-  /* 根据你选择的反馈展示方式设置样式 */
 }
 
 h2 {
