@@ -10,33 +10,11 @@
         <el-table-column align="center" label="宠物类型" prop="pet_type"/>
         <el-table-column align="center" label="操作" width="210">
           <template #default="scope">
-            <el-button size="small" type="primary" @click="doEdit(scope.row.name)">编辑</el-button>
             <el-button size="small" type="danger" @click="doDelete(scope.row.user_username)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
     </el-row>
-
-    <el-dialog v-model="editDialogVisible" title="编辑宠物信息" width="60%">
-      <el-form ref="form" :model="edit" label-width="80px">
-        <el-form-item label="姓名">
-          <el-input v-model="edit.user_name" placeholder="姓名" readonly></el-input>
-        </el-form-item>
-        <el-form-item label="用户名">
-          <el-input v-model="edit.user_username" placeholder="用户名"></el-input>
-        </el-form-item>
-        <el-form-item label="宠物名称">
-          <el-input v-model="edit.pet_name" placeholder="宠物名称"></el-input>
-        </el-form-item>
-        <el-form-item label="宠物类型">
-          <el-input v-model="edit.pet_type" placeholder="宠物类型"></el-input>
-        </el-form-item>
-      </el-form>
-      <template #footer>
-        <el-button type="primary" @click="doEditSubmit">提交</el-button>
-        <el-button type="danger" @click="hidEditWin">取消</el-button>
-      </template>
-    </el-dialog>
 
     <el-row style="position: absolute;bottom: 20px">
       <el-pagination
@@ -86,41 +64,6 @@ const fetchPets = () => {
 onMounted(() => {
   fetchPets();
 });
-
-
-const edit = ref()
-
-const editDialogVisible = ref(false)
-
-const doEdit = (name) => {
-  edit.value = {};
-  editDialogVisible.value = true;
-  for (let i = 0; i < user.value.length; i++) {
-    if (user.value[i].name === name) {
-      edit.value = user.value[i];
-      break;
-    }
-  }
-}
-
-const doEditSubmit = () => {
-  axios.post('http://localhost:8080/api/admin/adoption/edit', edit.value)
-      .then(response => {
-        ElMessage({
-          type: 'success',
-          message: '修改成功',
-        })
-        editDialogVisible.value = false;
-      })
-      .catch(error => {
-        ElMessage.error('请求失败，请联系管理员。')
-      });
-}
-
-const hidEditWin = () => {
-  editDialogVisible.value = false;
-  edit.value = {};
-}
 
 const doDelete = (user_username) => {
   ElMessageBox.confirm(
