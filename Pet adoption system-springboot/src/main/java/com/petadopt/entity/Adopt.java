@@ -13,6 +13,7 @@ public class Adopt {
     private String reason;
     private String created_at;
 
+
     public void setId(int id) {
         this.id = id;
     }

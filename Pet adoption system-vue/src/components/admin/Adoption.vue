@@ -1,6 +1,7 @@
 <template>
   <div style="height: 80vh">
     <h1 style="text-align: center;font-size: 36px">领养情况</h1>
+
     <el-row style="margin-top: 15px">
       <el-table ref="studentTable" :data="user" height="524px" max-height="800">
         <el-table-column align="center" type="selection" width="50"/>

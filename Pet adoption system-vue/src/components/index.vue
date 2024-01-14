@@ -22,7 +22,6 @@
         <el-carousel-item>
           <img alt="" src="@/assets/pets/dog3.jpg" style="max-height: 100%;">
         </el-carousel-item>
-
       </el-carousel>
     </div>
 

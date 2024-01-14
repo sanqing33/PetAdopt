@@ -1,10 +1,9 @@
 <template>
   <div style="height: 80vh">
     <h1 style="text-align: center;font-size: 36px">领养申请</h1>
-    <!-- 数据表 -->
+
     <el-row style="margin-top: 15px">
-      <!-- 定义数据表  data属性用来绑定我们要显示的数据列表-->
-      <el-table ref="studentTable" :data="user" border height="524px" max-height="800">
+      <el-table ref="adoptTable" :data="user" border height="524px" max-height="800">
         <el-table-column align="center" label="序号" type="index" width="60"/>
         <el-table-column align="center" label="姓名" prop="name"/>
         <el-table-column align="center" label="年龄" prop="age"/>
@@ -21,7 +20,7 @@
         </el-table-column>
       </el-table>
     </el-row>
-    <!-- 分页栏 -->
+
     <el-row style="position: absolute;bottom: 20px">
       <el-pagination
           :current-page="pagination.page"
@@ -107,7 +106,6 @@ const doDelete = (name) => {
   ElMessageBox.confirm(
       `是否确认要删除[${name}]？`,
       '提示',
-
       {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
