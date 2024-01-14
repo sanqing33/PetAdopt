@@ -38,9 +38,6 @@
                       <router-link to="/user/regist">
                         <el-dropdown-item>注册</el-dropdown-item>
                       </router-link>
-                      <router-link to="/user">
-                        <el-dropdown-item>个人资料</el-dropdown-item>
-                      </router-link>
                       <router-link to="/admin/login">
                         <el-dropdown-item divided>管理员登录</el-dropdown-item>
                       </router-link>

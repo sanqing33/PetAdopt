@@ -86,7 +86,7 @@ const doConsent = (name) => {
             .then(response => {
               ElMessage({
                 type: 'success',
-                message: '删除成功',
+                message: '已同意',
               })
               fetchPets();
             })
@@ -97,7 +97,7 @@ const doConsent = (name) => {
       .catch(() => {
         ElMessage({
           type: 'info',
-          message: '取消删除',
+          message: '取消',
         })
       })
 }

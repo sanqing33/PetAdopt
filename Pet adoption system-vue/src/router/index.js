@@ -11,10 +11,6 @@ const router = createRouter({
             path: '/user',
             children: [
                 {
-                    path: '/',
-                    component: () => import('@/components/UserSet.vue')
-                },
-                {
                     path: '/user/login',
                     name: 'Login',
                     component: () => import('@/views/login.vue')
@@ -71,11 +67,6 @@ const router = createRouter({
             path: '/adopt',
             name: 'AdoptionApplication',
             component: () => import('@/components/AdoptionApplication.vue')
-        },
-        {
-            path: '/user',
-            name: 'UserSet',
-            component: () => import('@/components/UserSet.vue')
         },
     ]
 })

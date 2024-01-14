@@ -207,7 +207,7 @@ const doInsertSubmit = () => {
         fetchPets();
         ElMessage({
           type: 'success',
-          message: '修改成功',
+          message: '添加成功',
         })
         insertDialogVisible.value = false;
       })

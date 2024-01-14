@@ -12,7 +12,7 @@
         <el-form-item label="密码" prop="password">
           <el-input v-model="form.password" placeholder="请输入密码" type="password"></el-input>
         </el-form-item>
-        <el-form-item label="邮箱" prop="username">
+        <el-form-item label="邮箱" prop="email">
           <el-input v-model="form.email" placeholder="邮箱"></el-input>
         </el-form-item>
         <el-form-item style="transform: translateX(18px)">
