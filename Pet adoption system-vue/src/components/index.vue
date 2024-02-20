@@ -30,11 +30,12 @@
         <img alt="" src="@/assets/friends.jpg">
         <span>看看我的伙伴</span>
       </router-link>
-      <router-link style="transform: translateX(80px)" to="/user/login">
+      <router-link style="transform: translateX(80px)" to="/guide">
         <img alt="" src="@/assets/adopt.jpg">
-        <span>登录/注册<br>&ensp;带我回家</span>
+        <span>带我回家</span>
       </router-link>
     </div>
+
   </div>
 </template>
 

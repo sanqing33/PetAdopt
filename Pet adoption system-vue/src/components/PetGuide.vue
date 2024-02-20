@@ -7,6 +7,8 @@
         <span style="transform: translateY(53%)">领养代替购买</span>
       </div>
     </div>
+
+    <!--  宠物列表  -->
     <div class="card-container" @click="dialog">
       <div v-for="pet in pets" :key="pet.id" class="card">
         <h2>{{ pet.name }}</h2>
@@ -20,6 +22,7 @@
       </div>
     </div>
 
+    <!--  领养须知，5秒倒计时  -->
     <el-dialog v-model="dialogVisible" style="height: 390px" title="领养须知" width="45%">
       <h3 style="text-align: center">感谢您考虑领养宠物！在领养之前，请阅读以下须知：</h3>
       <ul style="margin-bottom: 16px;">
@@ -38,6 +41,7 @@
       </template>
     </el-dialog>
 
+    <!--  回到顶部按钮  -->
     <el-backtop :bottom="50" :right="50" style="width: 50px;height: 50px;">
       <span style="width: 45px;height: 45px;font-size: 16px;transform: translate(6px,1px)">回到顶部</span>
     </el-backtop>

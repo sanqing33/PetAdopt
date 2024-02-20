@@ -8,28 +8,13 @@ const router = createRouter({
             component: () => import('@/components/index.vue'),
         },
         {
-            path: '/user',
-            children: [
-                {
-                    path: '/user/login',
-                    name: 'Login',
-                    component: () => import('@/views/login.vue')
-                },
-                {
-                    path: '/user/regist',
-                    name: 'Regist',
-                    component: () => import('@/views/regist.vue')
-                },
-                {
-                    path: '/admin/login',
-                    name: 'AdminLogin',
-                    component: () => import('@/views/admin-login.vue')
-                },
-            ]
+            path: '/admin/login',
+            name: 'AdminLogin',
+            component: () => import('@/views/AdminLogin.vue')
         },
         {
             path: '/admin',
-            component: () => import('@/views/System admin.vue'),
+            component: () => import('@/views/admin.vue'),
             children: [
                 {
                     path: '/admin',

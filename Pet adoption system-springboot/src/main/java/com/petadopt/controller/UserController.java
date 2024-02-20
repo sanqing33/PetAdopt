@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin
 public class UserController {
 
     private final UserMapper userMapper;
@@ -23,26 +23,7 @@ public class UserController {
         this.userMapper = userMapper;
     }
 
-    @PostMapping("/api/login")
-    public String postLogin(@RequestBody Map<String, String> requestBody) {
-        String username = requestBody.get("username");
-        String password = requestBody.get("password");
-        List<User> userList = userMapper.select(username);
-        if (userList != null && !userList.isEmpty()) {
-            User user = userList.get(0);
-            if (user.getPassword().equals(password)) {
-                return "登录成功";
-            }
-        }
-        return "登录失败";
-    }
-
-    @PostMapping("/api/regist")
-    public String postPet(@RequestBody User user) {
-        userMapper.insert(user);
-        return "注册成功";
-    }
-
+    // 后台用户管理页面
     @GetMapping("/api/admin/user")
     public String getAdminUser(@RequestParam("page") int page, @RequestParam("pageSize") int pageSize) {
         int offset = (page - 1) * pageSize;
@@ -54,6 +35,7 @@ public class UserController {
         return JSON.toJSONString(result);
     }
 
+    // 后台领养申请管理页面
     @GetMapping("/api/admin/adopt")
     public String getAdminAdopt(@RequestParam("page") int page, @RequestParam("pageSize") int pageSize) {
         int offset = (page - 1) * pageSize;
@@ -65,6 +47,7 @@ public class UserController {
         return JSON.toJSONString(result);
     }
 
+    // 后台领养申请管理页面 删除 功能
     @PostMapping("/api/admin/adopt/delete")
     public String postDeleteAdopt(@RequestBody Map<String, String> requestBody) {
         String name = requestBody.get("name");
@@ -72,6 +55,7 @@ public class UserController {
         return "删除成功";
     }
 
+    // 后台领养情况管理页面
     @GetMapping("/api/admin/adoption")
     public String getAdminAdoption(@RequestParam("page") int page, @RequestParam("pageSize") int pageSize) {
         int offset = (page - 1) * pageSize;
@@ -83,6 +67,7 @@ public class UserController {
         return JSON.toJSONString(result);
     }
 
+    // 后台用户管理页面 搜索 功能
     @GetMapping("/api/admin/user/query")
     public String getAdminQueryUser(@RequestParam(required = false) String name,
                                     @RequestParam(required = false) String username,
@@ -98,12 +83,14 @@ public class UserController {
         return JSON.toJSONString(result);
     }
 
+    // 后台用户管理页面 编辑 功能
     @PostMapping("/api/admin/user/edit")
     public String postEditUser(@RequestBody User user) {
         userMapper.update(user);
         return "编辑成功";
     }
 
+    // 后台用户管理页面 删除 功能
     @PostMapping("/api/admin/user/delete")
     public String postDeleteUser(@RequestBody Map<String, String> requestBody) {
         String name = requestBody.get("name");
@@ -111,6 +98,7 @@ public class UserController {
         return "删除成功";
     }
 
+    // 后台用户管理页面 批量删除 功能
     @PostMapping("/api/admin/user/deletes")
     public String postDeleteUsers(@RequestBody List<String> usernames) {
         userMapper.deleteUsers(usernames);

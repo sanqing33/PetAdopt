@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="adoption-form">
-      <h1 style="text-align: center">宠物领养申请</h1>
+      <h1 style="text-align: center">领养申请</h1>
       <el-form ref="form" :model="form" label-width="120px" style="transform: translateX(-30px)">
         <el-form-item label="姓名" prop="name">
           <el-input v-model="form.name" @input="change"></el-input>
@@ -28,10 +28,12 @@
         </el-form-item>
       </el-form>
     </div>
+
     <div style="z-index: 1">
       <img alt="" src="@/assets/adopt-dog.jpg" style="bottom: 5%;left: 3%">
       <img alt="" src="@/assets/adopt-cat.png" style="bottom: 5%;right: 3%">
     </div>
+
   </div>
 </template>
 
