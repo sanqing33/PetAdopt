@@ -1,3 +1,8 @@
+## 详情
+CSDN:【web课程设计】一个简单的基于Springboot+vue3开发的宠物领养系统
+http://t.csdnimg.cn/1JKIl
+
+
 ## 前台
 
 主页：通过按钮跳转宠物图鉴
