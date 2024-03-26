@@ -24,6 +24,33 @@
 
 ****
 
+## 系统页面展示
+
+首页：
+![首页](https://img-blog.csdnimg.cn/direct/996e461d433e48519d85d0a354e09333.png)
+宠物图鉴页面：
+![宠物图鉴页面](https://img-blog.csdnimg.cn/direct/eab4fbd5205e4141b07bdbe1127f3554.png)
+
+![宠物图鉴页面](https://img-blog.csdnimg.cn/direct/aef89af9403743299de79cae86dcf2da.png)
+宠物领养须知：
+![宠物领养须知](https://img-blog.csdnimg.cn/direct/e876df861bec4266a5872959cf4d4cd8.png)
+填写申请信息页面：
+![填写申请信息页面](https://img-blog.csdnimg.cn/direct/7b3f3004140d4fc4b0be2f1e69aa06f4.png)
+后台管理页面：
+![后台管理页面](https://img-blog.csdnimg.cn/direct/075c233c8dc64776ab8595d027578201.png)
+宠物信息管理页面：
+![宠物信息管理页面](https://img-blog.csdnimg.cn/direct/c36b2594263a4ba7a0710a62b58f0c38.png)
+宠物添加页面：
+![宠物添加页面](https://img-blog.csdnimg.cn/direct/782695511dc64baabb684fcfe1f08215.png)
+用户信息管理页面：
+![用户信息管理页面](https://img-blog.csdnimg.cn/direct/64fd93620df249058381043e882ce91a.png)
+领养申请页面：
+![领养申请页面](https://img-blog.csdnimg.cn/direct/1b262dff8c8b4b578b64ce1d5e1d07e4.png)
+领养情况查看页面：
+![领养情况查看页面](https://img-blog.csdnimg.cn/direct/449ba8bfd4104414b5a94afd9349f99c.png)
+
+
+
 ## 问题
 
 #### 1.用户登录与注册功能未完善，领养功能未绑定用户登录
