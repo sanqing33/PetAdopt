@@ -1,6 +1,6 @@
 ## 详情
 CSDN:【web课程设计】一个简单的基于Springboot+vue3开发的宠物领养系统
-http://t.csdnimg.cn/1JKIl
+[http://t.csdnimg.cn/1JKIl](https://gitee.com/hjy1498341061/joushop/invite_link?invite=609408168beb5e39cd6d085b46a686c31c31cf30e1b067e3e511b1509403e86e255ea01b30f3714c125f469ce410a4f52deb438a7165bb6e)
 
 
 ## 前台
